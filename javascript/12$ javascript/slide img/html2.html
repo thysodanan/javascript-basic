@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/d6d651f030.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(
+          to right bottom,
+          rgb(19, 123, 126),
+          rgb(117, 13, 115)
+        );
+      }
+      .slid {
+        position: relative;
+      }
+      .img {
+        position: relative;
+        width: 700px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 0 5px white;
+      }
+      .img > img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .img > img:not(.active) {
+        left: -100%;
+      }
+      .btn > button {
+        border: none;
+        outline: none;
+        background: rgba(104, 91, 91, 0.3);
+        width: 50px;
+        height: 50px;
+        border-radius: 59%;
+        font-size: 1.5rem;
+      }
+      .back-btn {
+        margin-left: 5px;
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        left: 10px;
+      }
+      .next-btn {
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        right: 10px;
+      }
+      .dot-container {
+        width: 100px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translatex(-50%);
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 6px 8px;
+        border-radius: 100px;
+
+        backdrop-filter: blur(50px);
+      }
+      .dot {
+        background-color: rgb(130, 130, 135);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .dot.active {
+        width: 40px;
+        background-color: aliceblue;
+        border-radius: 100px;
+      }
+
+      @keyframes nextOut {
+        from {
+          left: 0%;
+        }
+        to {
+          left: -100%;
+        }
+      }
+      @keyframes nextIn {
+        from {
+          left: 100%;
+        }
+        to {
+          left: 0;
+        }
+      }
+      @keyframes prevOut {
+        from {
+          left: 0%;
+        }
+        to {
+          left: 100%;
+        }
+      }
+      @keyframes prevIn {
+        from {
+          left: -100%;
+        }
+        to {
+          left: 0%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slid">
+      <div class="img">
+        <img
+          src="https://cdn.pixabay.com/photo/2015/01/21/14/14/macbook-606763_960_720.jpg"
+          class="active"
+          alt=""
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2016/11/18/19/24/glasses-1836525_1280.jpg"
+          alt=""
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2019/04/25/14/43/workplace-4155023_1280.jpg"
+          alt=""
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2016/11/19/16/01/audio-1840073_960_720.jpg"
+          alt=""
+        />
+      </div>
+      <div class="btn">
+        <button class="back-btn"><i class="fa-solid fa-angle-left"></i></button>
+        <button class="next-btn">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+      <div class="dot-container">
+        <div class="dot active" attr="0"></div>
+        <div class="dot" attr="1"></div>
+        <div class="dot" attr="2"></div>
+        <div class="dot" attr="3"></div>
+      </div>
+    </div>
+    <script>
+      const img = document.querySelectorAll(".img>img");
+      const backbtn = document.querySelector(".back-btn");
+      const nextbtn = document.querySelector(".next-btn");
+      const dot = document.querySelectorAll(".dot");
+      let counter = 0;
+      //   console.log(img);
+      nextbtn.addEventListener("click", nextslide);
+      function nextslide() {
+        img[counter].style.animation = "nextOut 0.8s forwards";
+        if (counter >= img.length - 1) {
+          counter = 0;
+        } else {
+          counter++;
+        }
+        img[counter].style.animation = "nextIn 0.8s forwards";
+      }
+      backbtn.addEventListener("click", backslid);
+      function backslid() {
+        img[counter].style.animation = "prevOut 0.8s forwards";
+        if (counter == 0) {
+          counter = img.length - 1;
+        } else {
+          counter--;
+        }
+        img[counter].style.animation = "prevIn 0.8s forwards";
+      }
+      function autoslid() {
+        deleteinterval = setInterval(function () {
+          nextslide();
+        }, 1000);
+      }
+      autoslid();
+      const slidecontainer = document.querySelector(".slid");
+      slidecontainer.addEventListener("mouseover", function () {
+        clearInterval(deleteinterval);
+      });
+      slidecontainer.addEventListener("mouseleave", function () {
+        autoslid();
+      });
+    </script>
+  </body>
+</html>

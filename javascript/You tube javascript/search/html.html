@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .search{
+            position: absolute;
+            width: 40px;
+        }
+        .mic{
+            position: absolute;
+            right: 10px;
+            width: 40px;
+        }
+        .container{
+            padding: 5px;
+            box-shadow:  2px 2px 4px ;
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            height: 50px;
+            border-radius: 30px;
+            background-color: rgb(246, 250, 250);
+            transition: width 0.5s;
+            /* transition-delay: 0.5s; */
+        }
+        .input{
+            /* color: aliceblue; */
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-size: 1.1rem;
+            margin: 4px 50px;
+        }
+        .active.container{
+            width: 50px;
+        }
+        .active .input{
+            width: 0;
+        }
+        /* watch clear ដកគ្លា */
+        .active .mic{   
+            width: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="search" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-search-512.png" alt="">
+        <input type="text" placeholder="Search..." class="input">
+        <img class="mic" src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-512.png" alt="">
+    </div>
+    <script>
+        const container=document.querySelector(".container");
+        const search=document.querySelector(".search")
+        search.addEventListener("click",()=>{
+            container.classList.toggle("active")
+        })
+    </script>
+</body>
+</html>

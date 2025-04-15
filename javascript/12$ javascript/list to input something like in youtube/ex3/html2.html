@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 400px;
+            padding: 1.3rem 1rem;
+            background-color: aqua;
+        }
+        form{
+            flex-grow: 1;
+        }
+        .list{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        ul>li{
+            display: flex;
+            justify-content: space-between;
+        }
+        .complete{
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <input type="text" class="input">
+            <button type="button" class="add">Add</button>
+        </form>
+        <!-- <ul class="list">
+            <li>item<i class="fa-solid fa-xmark"></i></li>
+        </ul> -->
+        <p class="count">There no item</p>
+        <button class="btn-clear">Clear</button>
+    </div>
+    <script>
+        const container=document.querySelector(".container")
+        const count=document.querySelector(".count")
+        document.addEventListener("DOMContentLoaded",function(){
+            const add=document.querySelector(".add")
+            const ul=document.createElement("ul")
+            const clear=document.querySelector(".btn-clear")
+            ul.className="list";
+            
+            container.insertBefore(ul,count);
+            add.addEventListener("click",addtext);
+            ul.addEventListener("click",deletetext)
+            clear.addEventListener("click",cleartext)
+            countitem();
+        });
+        function addtext(event){
+            event.preventDefault();
+            const input=document.querySelector(".input");
+            const ul=document.querySelector(".list");
+    
+            const li=document.createElement("li");
+            if(!input.value.trim()){
+                alert("Input Sting brooooo..........");
+                input.focus();
+            }else{
+                li.innerHTML=`${input.value}<i class="fa-solid fa-xmark"></i>`
+                ul.appendChild(li)
+            }
+            input.value="";
+            input.focus();
+            countitem();
+        }
+        function deletetext(event){
+            if(event.target.tagName=="LI"){
+                event.target.classList.toggle("complete");
+            }
+            if(event.target.tagName=="I"){
+                event.target.parentElement.remove();
+                countitem();
+            }
+        }
+        function cleartext(){
+            const ul=document.querySelector(".list")
+            ul.innerHTML="";
+            countitem();
+        }
+        function countitem(){
+            const countItem=document.querySelector(".list").childElementCount;
+            const verb=countItem>1?"are":"is";
+            const number=countItem>0?countItem:"no such"
+            const singular=countItem>1?"s":""
+            count.textContent=`there${verb} ${number} item ${singular}`
+
+        }
+        
+    </script>
+</body>
+</html>

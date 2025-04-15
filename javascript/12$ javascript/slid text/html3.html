@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/d6d651f030.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        position: relative;
+        width: 500px;
+        height: 230px;
+        border: 1px solid black;
+        padding: 1rem 2rem;
+      }
+      .img {
+        width: 70px;
+        height: 70px;
+      }
+      .img > img {
+        border: 1px solid black;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+      }
+      .part1 {
+        display: flex;
+        padding: 1rem 0;
+        border-bottom: 2px solid;
+      }
+      .text-header {
+        margin: 6px 1rem;
+      }
+      .part2 {
+        padding: 1rem 0;
+      }
+      .next-btn,
+      .back-btn {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        font-size: 2rem;
+      }
+      .next-btn {
+        bottom: -20%;
+        transform: translate(-50%);
+        left: 50%;
+      }
+      .back-btn {
+        transform: translate(-50%);
+        top: -20%;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="part1">
+        <div class="img">
+          <img
+            src="https://media.istockphoto.com/id/1357947512/photo/a-delighted-african-american-woman-texting-on-her-smartphone-while-walking-through-the-city.webp?s=2048x2048&w=is&k=20&c=aNviuTSTg046IOVDVOmOlPnm-lfYVXAWsb9rLPkKe5A="
+            alt=""
+          />
+        </div>
+        <div class="text-header">
+          <h2 class="Name">thy </h2>
+          <h4 class="position">IT Support</h4>
+        </div>
+      </div>
+      <div class="part2">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quas
+          obcaecati id reiciendis cupiditate natus dignissimos atque ut, dicta
+          molestias dolorum quam culpa!
+        </p>
+      </div>
+      <button class="back-btn"><i class="fa-solid fa-angle-up"></i></button>
+      <button class="next-btn"><i class="fa-solid fa-angle-down"></i></button>
+    </div>
+    <script>
+      const arr = [
+        {
+          img: "https://media.istockphoto.com/id/598221526/photo/portrait-of-laughing-young-man-looking-at-camera-in-park.jpg?s=2048x2048&w=is&k=20&c=nT1NBZpsVlNP-OYYvaU6pU-1wA5p8i4bWJ8iwoquKlo=",
+          name: "reaksa",
+          position: "IT",
+          text: "skfjsalfdks;afkls;afk;afkl;afkl;safjl;asjfka;sjfa;fsa;fjsalfk",
+        },
+        {
+          img: "https://media.istockphoto.com/id/1357947512/photo/a-delighted-african-american-woman-texting-on-her-smartphone-while-walking-through-the-city.webp?s=2048x2048&w=is&k=20&c=aNviuTSTg046IOVDVOmOlPnm-lfYVXAWsb9rLPkKe5A=",
+          name: "danan",
+          position: "IT",
+          text: "skfjsalfdks;afkls;afk;afkl;afkl;safjl;asjfka;sjfa;fsa;fjsalfk",
+        },
+        {
+          img: "https://cdn.pixabay.com/photo/2020/03/11/10/08/camera-4921646_960_720.jpg",
+          name: "wu jie min",
+          position: "IT",
+          text: "skfjsalfdks;afkls;afk;afkl;afkl;safjl;asjfka;sjfa;fsa;fjsalfk",
+        },
+        {
+          img: "https://media.istockphoto.com/id/1357947512/photo/a-delighted-african-american-woman-texting-on-her-smartphone-while-walking-through-the-city.webp?s=2048x2048&w=is&k=20&c=aNviuTSTg046IOVDVOmOlPnm-lfYVXAWsb9rLPkKe5A=",
+          name: "on dara",
+          position: "IT",
+          text: "skfjsalfdks;afkls;afk;afkl;afkl;safjl;asjfka;sjfa;fsa;fjsalfk",
+        },
+      ];
+      const img = document.querySelector(".img>img");
+      const Name = document.querySelector(".Name");
+      const text = document.querySelector(".part2");
+      const position = document.querySelector(".position");
+      const nextbtn = document.querySelector(".next-btn");
+      const backbtn = document.querySelector(".back-btn");
+      console.dir(img);
+      var counter = 0;
+      nextbtn.addEventListener("click", function () {
+        if(counter==arr.length-1){
+            counter=0
+        }else{
+            counter++
+        }
+        var person = arr[counter];
+        img.src = person.img;
+        Name.textContent = person.name;
+        text.textContent = person.text;
+        position.textContent = person.position;
+      });
+      backbtn.addEventListener("click",function(){
+        if(counter==0){
+            counter=3
+        }else{
+            counter--
+        }
+        var person = arr[counter];
+        img.src = person.img;
+        Name.textContent = person.name;
+        text.textContent = person.text;
+        position.textContent = person.position;
+      })
+    </script>
+  </body>
+</html>

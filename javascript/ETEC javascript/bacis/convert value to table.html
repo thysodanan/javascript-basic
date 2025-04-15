@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container shadow p-2">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="form-group">
+            <label for="">Input ID</label>
+            <input type="text" class="id form-control" />
+          </div>
+          <div class="form-group">
+            <label for="">Input name</label>
+            <input type="text" class="name form-control" />
+          </div>
+          <div class="form-group">
+            <label for="">Please select your gender</label>
+            <select name="" id="" class="gender form-control">
+              <option value="Male">Male</option>
+              <option value="female">female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">input you position</label>
+            <input type="text" class="position form-control" />
+          </div>
+          <div class="form-group">
+            <label for="">input your salary</label>
+            <input type="text" class="salary form-control" />
+          </div>
+          <div class="gorm-group">
+            <label for="">Upload file</label>
+            <input type="file" class="file">
+          </div>
+          <div class="form-footer">
+            <button type="button" class="cencel btn btn-danger mt-2">
+              cencel
+            </button>
+            <button type="submit" class="submite btn btn-primary mt-2">
+              submite
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <table class="table table-striped table-hover table-bordered">
+        <tr class="table-dark">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Position</th>
+          <th>Salary</th>
+        </tr>
+        <tbody class="tbl-data">
+
+        </tbody>
+      </table>
+    </div>
+    <script>
+      var btn = document.querySelector(".submite");
+      var Name = document.querySelector(".name");
+      var id = document.querySelector(".id");
+      var salary = document.querySelector(".salary");
+      var gender = document.querySelector(".gender");
+      var position = document.querySelector(".position");
+      var profile=document.querySelector(".file");
+      
+      var tr = ''
+      btn.addEventListener("click", function () {
+        if(id.value==""){
+          alert("Please input id");
+          id.focus();
+        }else if(Name.value==""){
+          alert("Please input name");
+          Name.focus();
+        }else if(salary.value==""){
+          alert("Please input salary");
+          salary.focus();
+        }else if(position.value==""){
+          alert("plesae input position");
+          position.focus();
+        }else if(profile.value==""){
+          alert("Please select file");
+          profile.focus();
+        }
+            var img=profile.files[0];
+        tr += `
+            <tr>
+                    <td>${id.value}</td>
+                    <td>${Name.value}</td>
+                    <td>${gender.value}</td>
+                    <td>${position.value}</td>
+                    <td>${salary.value}</td>
+                    <td>
+                        <img src="${URL.createObjectURL(img)}" width="60" height="60" alt="">
+                        </td>
+                    <td>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-danger">delete</button>
+                 </td>
+                 </tr>`;
+                 document.querySelector(".tbl-data").innerHTML = tr;
+                 id.value='';
+                 Name.value='';
+                 position.value='';
+                 gender.value='';
+                 salary.value='';
+                 id.focus();
+                 
+                });
+                 </script>
+  </body>
+</html>

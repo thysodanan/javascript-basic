@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      body {
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+      }
+      span {
+        height: 100px;
+        background: url("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-256.png");
+        width: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        pointer-events: painted;
+        transform: translate(-50%, -50%);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation: animate 6s linear;
+    }
+    @keyframes animate{
+        0%{
+            transform: translate(-50%, -50%);
+            filter: hue-rotate(0);
+            opacity: 1;
+            
+        }
+        100%{
+            filter: hue-rotate(199deg);
+            transform: translate(-50%, -5000%);
+            opacity: 0;
+
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <span></span> -->
+    <script>
+        const body=document.querySelector("body")
+        body.addEventListener("mousemove",function(event){
+            const xpos=event.offsetX;
+            const ypos=event.offsetY;
+            const span=document.createElement("span")
+            span.style.left=xpos+"px"
+            span.style.top=ypos+"px"
+            const size=Math.random()*100;
+            span.style.width=size+"px"
+            span.style.height =size+"px"
+            body.appendChild(span)
+            setTimeout(()=>{
+                span.remove();
+            },3000)
+            
+        })
+    </script>
+  </body>
+</html>

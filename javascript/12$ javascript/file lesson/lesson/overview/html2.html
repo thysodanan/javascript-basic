@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .user {
+        width: 300px;
+        height: 200px;
+        background-color: indianred;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 1rem;
+        border-radius: 20px;
+      }
+
+      .user1 {
+        display: flex;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="user1"></div>
+    <script>
+      const u = document.querySelector(".user1");
+      const user = [
+        {
+          name: "thy sodanan",
+          position: "Student",
+          Gmail: "thysodanan@gmail.com",
+        },
+        {
+          name: "thy reaksa",
+          position: "Student",
+          Gmail: "thysodanan@gmail.com",
+        },
+        {
+          name: "thy sodany",
+          position: "Student",
+          Gmail: "thysodanan@gmail.com",
+        },
+        {
+          name: "thy sotheara",
+          position: "Student",
+          Gmail: "thysodanan@gmail.com",
+        },
+      ];
+      const User = user.map(function (User) {
+        return `
+                <div class="user">
+
+                    <h2>${User.name}</h2>
+                    <h3>${User.Gmail}</h3>
+                    <h4>${User.position}</h4>
+                    </div>
+
+            `;
+      });
+      u.innerHTML = User;
+    </script>
+  </body>
+</html>

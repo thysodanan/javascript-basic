@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/d6d651f030.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>reanmore.com</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Odor+Mean+Chey&family=Poppins:wght@200;300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif, "Odor Mean Chey", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right bottom,rgb(24, 176, 218),red);
+}
+.slide-container {
+    position: relative;
+}
+
+.img-wrapper {
+    box-shadow: 0 0 10px rgb(21, 19, 19);
+  position: relative;
+  width: 700px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.img-wrapper > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.img-wrapper > img:not(.active) {
+  left: -100%;
+}
+.btn-container {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+}
+
+.btn-container > button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  backdrop-filter: blur(50px);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 50px rgb(210, 210, 210);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: grey;
+}
+.btn-container > button:hover {
+  color: rgb(49, 49, 49);
+  box-shadow: 0 0 30px rgb(196, 196, 196);
+  background: rgba(255, 255, 255, 0.8);
+}
+.btn-container > button:first-child {
+  position: absolute;
+  z-index: 100;
+  left: 25px;
+}
+.btn-container > button:last-child {
+  position: absolute;
+  z-index: 100;
+  right: 25px;
+}
+
+.dots-container {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 118px;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(50px);
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 100px;
+  padding: 5px 0;
+  gap: 0.5rem;
+}
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease-out;
+}
+.dot.active {
+  width: 40px;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes nextOut {
+  from {
+    left: 0%;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes nextIn {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes prevOut {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes prevIn {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="img-wrapper">
+        <img src="https://cdn.pixabay.com/photo/2015/01/21/14/14/macbook-606763_960_720.jpg" class="active" />
+        <img src="https://cdn.pixabay.com/photo/2016/11/18/19/24/glasses-1836525_1280.jpg" />
+        <img src="https://cdn.pixabay.com/photo/2019/04/25/14/43/workplace-4155023_1280.jpg" />
+        <img src="https://cdn.pixabay.com/photo/2016/11/19/16/01/audio-1840073_960_720.jpg" />
+      </div>
+      <div class="btn-container">
+        <button class="prev"><i class="fa-solid fa-angle-left"></i></button>
+        <button class="next"><i class="fa-solid fa-angle-right"></i></button>
+      </div>
+      <div class="dots-container">
+        <div class="dot active" attr="0"></div>
+        <div class="dot" attr="1"></div>
+        <div class="dot" attr="2"></div>
+        <div class="dot" attr="3"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

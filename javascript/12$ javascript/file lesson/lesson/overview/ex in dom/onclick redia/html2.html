@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .box1 {
+        width: 500px;
+        height: 500px;
+        background-color: yellow;
+        border-radius: 50%;
+        opacity: 1;
+        margin-top: 0;
+        transition: all 0.7s;
+      }
+      .hide {
+        margin-top: 150px;
+        opacity: 0;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1"></div>
+    <script>
+        const box=document.querySelector(".box1");
+        box.addEventListener("click",function(){
+            if(box.classList.contains("hide")){
+                box.classList.remove("hide");
+            }else{
+                box.classList.add("hide");
+            }
+        })
+    </script>
+  </body>
+</html>

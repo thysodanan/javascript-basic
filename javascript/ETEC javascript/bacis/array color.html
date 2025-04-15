@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 class="text">Hello loop</h3>
+    <button type="button" class="btn">click</button>
+    <script>
+        var text=document.querySelector(".text");
+        var btn=document.querySelector(".btn");
+        btn.addEventListener("click",function(){
+            var color=["red","blue"];
+            var va="";
+            for(i=0;i<color.length;i++){
+                va=va+color[i]+"";
+            }
+            text.innerHTML=va;
+
+        })
+    </script>
+</body>
+</html>

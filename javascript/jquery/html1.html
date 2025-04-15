@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+        }
+        .btn{
+            padding: 1rem 2rem;
+            background-color: red;
+            color: aliceblue;
+        }
+        .modal{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">click</button>
+    <div class="modal"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).on("click",".btn",function(){
+            $(".modal").toggle(500);
+        })
+    </script>
+</body>
+</html>

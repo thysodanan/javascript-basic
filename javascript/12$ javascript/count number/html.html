@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+      />
+      <title>Document</title>
+      <style>
+        body {
+          background-color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+        .container {
+        font-family: "Concert One", sans-serif;
+        display: flex;
+        border-radius: 20px;
+        box-shadow: 0 0 3px white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 300px;
+        background-color: rgba(158, 135, 135, 0.285);
+      }
+      #count {
+        color: white;
+        font-size: 6rem;
+        margin-bottom: 4rem;
+      }
+      .btn > button {
+        padding: 10px 2rem;
+        font-size: 1.5rem;
+        font-family: "Concert One", sans-serif;
+        border-radius: 10px;
+        margin-left: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="count">count</div>
+      <div class="btn">
+        <button class="btn1">Start</button>
+        <button class="btn2">stop</button>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

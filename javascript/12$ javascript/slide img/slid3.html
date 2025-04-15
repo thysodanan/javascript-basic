@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/d6d651f030.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .slid {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+
+      }
+      .img > img:not(.active) {
+        left: -100%;
+      }
+      
+      .img {
+        width: 500px;
+        height: 220px;
+      }
+      .img > img {
+        position: absolute;
+        
+        width: 100%;
+        height: 100%;
+      }
+      .btn,
+      .next-btn,
+      .back-btn {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(240, 248, 255, 0.682);
+      }
+      .back-btn {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+      }
+      .next-btn {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+      }
+      @keyframes nextout {
+        from {
+          left: 0%;
+        }
+        to {
+          left: -100%;
+        }
+      }
+      @keyframes nextin {
+        from {
+          left: 100%;
+        }
+        to {
+          left: 0%;
+        }
+      }
+      @keyframes backout{
+        from{
+          left: 0%;
+        }
+        to{
+          left: 100%;
+        }
+      }
+      @keyframes backin{
+        from{
+          left: -100%;
+        }
+        to{
+          left: 0%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slid">
+      <div class="img">
+        <img
+        src="https://cdn.pixabay.com/photo/2015/01/21/14/14/macbook-606763_960_720.jpg"
+        class="active"
+          alt=""
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2016/11/18/19/24/glasses-1836525_1280.jpg"
+          alt=""
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2019/04/25/14/43/workplace-4155023_1280.jpg"
+          alt=""
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2016/11/19/16/01/audio-1840073_960_720.jpg"
+          alt=""
+        />
+      </div>
+      <div class="btn">
+        <button class="next-btn"><i class="fa-solid fa-angle-left"></i></button>
+        <button class="back-btn">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+    <script>
+      const img = document.querySelectorAll(".img>img");
+      const backbtn = document.querySelector(".next-btn");
+      const nextbtn = document.querySelector(".back-btn");
+      console.log(img, nextbtn, backbtn);
+      let counter = 0;
+      nextbtn.addEventListener("click",nextslid );
+       function nextslid() {
+        // img[count].style.animation="nextin 0.5s forwards";
+        img[counter].style.animation = "nextout 0.8s forwards";
+        if(counter>=img.length-1){//img length =4-1=3
+          counter=0
+        }else{
+          counter++;
+        }
+        img[counter].style.animation="nextin 0.8s forwards";
+      }
+    
+      backbtn.addEventListener("click",backslid );
+      
+      function backslid(){
+        img[counter].style.animation="backout 0.8s forwards";
+        if(counter==0){
+          counter=img.length-1;
+        }else{
+          counter--;
+        }
+        img[counter].style.animation="backin 0.8s forwards";
+      }
+      function autoslid(){
+         deletslide=setInterval(function(){
+          nextslid();
+
+        },1000);
+      }
+      autoslid();
+      const slid=document.querySelector(".slid")
+      slid.addEventListener("mousemove",function(){
+        clearInterval(deletslide);
+      })
+      slid.addEventListener("mouseleave",function(){
+        autoslid();
+      })
+    </script>
+  </body>
+</html>

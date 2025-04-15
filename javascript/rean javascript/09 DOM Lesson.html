@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Hello</button>
+    <button class="js-button">Second button</button>
+    <!-- <button>lsdklsa;</button> -->
+    <!-- <div>uoio</div> -->
+    <!-- <h1 id="you">welcome</h1> -->
+    <script>
+      // document.body.innerHTML='hello';
+      // document.title='you'
+      // console.log( document.title);
+
+      // console.log(document.body);
+
+      // console.log(document.body.innerHTML);
+
+      // console.log(document.querySelector('button'));
+      // console.log(document.querySelector('div'))
+
+      console.log(document.querySelector("button").innerHTML);
+      document.querySelector('button').innerHTML='changed';
+      const btn=document.querySelector('.js-button');
+      console.log(btn);
+    </script>
+  </body>
+</html>

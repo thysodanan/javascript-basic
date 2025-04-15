@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="text">hello css</h2>
+    <button class="btn1">click</button>
+    <script>
+        var btn1=document.querySelector(".btn1");
+        var i=0
+        var text=document.querySelector(".text")
+        btn1.addEventListener("click",function(){
+            if(i==0){
+                text.innerHTML="hello javascript";
+                i=1;
+            }
+            else{
+                text.innerHTML="hello css";
+                i=0
+            }
+        })
+    </script>
+</body>
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="btn">click</button>
+    <script>
+        var box=document.querySelector(".box");
+        var btn=document.querySelector(".btn");
+        var i=0
+        btn.addEventListener("click",function(){
+            if(i==0){
+
+                box.style.display="none";
+                i=1
+            }else{
+                box.style.display="block";
+                i=0;
+            }
+            
+
+        })
+    </script>
+</body>
+</html> -->
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="">Input value of number 1 </label>
+    <input type="text" class="input1" />
+    <label for="">Input value of number 2</label>
+    <input type="text" class="input2" />
+    <label for="">Result num1 + num2</label>
+    <input type="" class="rs">
+    <button class="btn">click</button>
+    <script>
+      var value1 = document.querySelector(".input1");
+      var value2 = document.querySelector(".input2");
+      var rs=document.document.querySelector(".rs");
+      var btn = document.querySelector(".btn");
+      var sum=0;
+      btn.addEventListener("click", function () {});
+      sum=parseInt(value1.value)+parseInt(value2.value);
+      rs.value=sum;
+    </script>
+  </body>
+</html> -->

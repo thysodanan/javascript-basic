@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+      background-color: black;
+      color: aliceblue;
+      }
+      .big {
+        width: 80%;
+        margin: auto;
+        /* padding: 1rem ; */
+        animation: transform 0.5s;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 7rem;
+      }
+      .icon {
+        position: relative;
+      }
+
+      .icon > span {
+        background-color: red;
+        display: flex;
+        width: 20px;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 60%;
+        right: -10px;
+        height: 20px;
+        border-radius: 50%;
+      }
+      .list > img {
+        width: 90%;
+      }
+      .list {
+        background-color: rgba(212, 211, 211, 0.263);
+        padding: 20px;
+        min-width: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        flex-wrap: wrap;
+        border-radius: 20px;
+      }
+      .product {
+        display: grid;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        /* flex-wrap: wrap; */
+        gap: 1.5rem;
+        padding: 1rem 7rem;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .list > h2 {
+        font-size: 500;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        font-size: large;
+      }
+      .list > .price {
+        letter-spacing: 4px;
+        font-size: small;
+        text-align: center;
+        padding: 0.7rem 0;
+      }
+      .list > .add {
+        padding: 5px 10px;
+        text-align: center;
+        border-radius: 10px;
+        border: none;
+        width: 80%;
+        margin-left: 10px;
+      }
+      .table {
+        width: 400px;
+        background-color: rgb(67, 63, 63);
+        color: aliceblue;
+        position: fixed;
+        inset: 0 -400px 0 auto;
+        display: grid;
+        grid-template-rows: 70px 1fr 70px;
+        transition: 0.5s;
+      }
+      body.active .table {
+        inset: 0 0 0 auto;
+      }
+      body.active .big {
+        transform: translateX(-180px);
+      }
+      .header-table {
+        padding: 1rem 1rem;
+        font-size: 2rem;
+      }
+      .btn {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border: none;
+        font-size: 2rem;
+      }
+      .btn > button {
+        font-size: 1.4rem;
+        border: none;
+      }
+      .btn > .close {
+        background-color: yellow;
+      }
+      .table .list-product .item img {
+        width: 100%;
+      }
+      .item {
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        align-items: center;
+        grid-template-columns: 70px 150px 50px 1fr;
+      }
+      .item .qty > span {
+        color: black;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-color: aliceblue;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .item .qty > span:nth-child(2) {
+        background-color: transparent;
+        color: aliceblue;
+      }
+      .item:nth-child(even) {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body class="">
+    <div class="big">
+      <div class="container">
+        <div class="text">
+          <h2>PRODUCT LIST</h2>
+        </div>
+        <div class="icon">
+          <svg
+            class="cart"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="60"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
+            />
+          </svg>
+          <span class="count">0</span>
+        </div>
+      </div>
+      <div class="product">
+        <div class="list">
+          <img
+            src="—Pngtree—sneakers running shoes color_9145069 (1).png"
+            alt=""
+          />
+          <h2>Name Product</h2>
+          <h5 class="price">$300</h5>
+          <button class="add">add to cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <div class="header-table">
+        <h4>Shopping cart</h4>
+      </div>
+      <div class="list-product">
+        <div class="item">
+          <div class="img">
+            <img
+              src="—Pngtree—sneakers running shoes color_9145069 (1).png"
+              alt=""
+            />
+          </div>
+          <div class="name">Name</div>
+          <div class="price">$800</div>
+          <div class="qty">
+            <!-- <span class="minus"><</span> -->
+            <span class="minus"><</span>
+
+            <span>0</span>
+            <span class="plus">></span>
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        <button class="close">Close</button>
+        <button class="check-out">Check out</button>
+      </div>
+    </div>
+    <script>
+      var icon = document.querySelector(".icon");
+      var iconcout = document.querySelector(".count");
+      var body = document.querySelector("body");
+      var close = document.querySelector(".close");
+      // var minus=document.querySelector(".minus");
+      // var plus=document.querySelector(".plus")
+      var listProduct = [];
+      var cart = [];
+      var productcart = document.querySelector(".list-product");
+      icon.addEventListener("click", () => {
+        body.classList.toggle("active");
+      });
+      close.addEventListener("click", () => {
+        body.classList.toggle("active");
+      });
+
+      const listProducthtml = document.querySelector(".product");
+      const adddatatohtml = () => {
+        listProducthtml.innerHTML = "";
+        if (listProduct.length > 0) {
+          listProduct.forEach((product) => {
+            let newproduct = document.createElement("div");
+            newproduct.dataset.id = product.id;
+            newproduct.classList.add("list");
+            newproduct.innerHTML = `
+             <img
+      src="${product.imge}"
+      alt=""
+      />
+      <h2>${product.name}</h2>
+      <div class="price">$${product.price}</div>
+      <button class="add">add to cart</button>
+        `;
+            listProducthtml.appendChild(newproduct);
+          });
+        }
+      };
+      listProducthtml.addEventListener("click", function (event) {
+        var positionclick = event.target;
+        if (positionclick.classList.contains("add")) {
+          var productId = positionclick.parentElement.dataset.id;
+          addtocart(productId);
+        }
+      });
+      const addtocart = (productId) => {
+        let posproductincart = cart.findIndex(
+          (value) => value.productId == productId
+        );
+        if (cart.length <= 0) {
+          cart = [
+            {
+              productId: productId,
+              qty: 1,
+            },
+          ];
+        } else if (posproductincart < 0) {
+          cart.push({
+            productId: productId,
+            qty: 1,
+          });
+        } else {
+          cart[posproductincart].qty = cart[posproductincart].qty + 1;
+        }
+        addcarttohtml(cart);
+      };
+      const addcarttohtml = () => {
+        productcart.innerHTML = "";
+        var totalProduct = 0;
+        if (cart.length > 0) {
+          cart.forEach((c) => {
+            totalProduct = totalProduct + c.qty;
+            var newcart = document.createElement("div");
+            var positionPorduct = listProduct.findIndex(
+              (value) => value.id == c.productId
+            );
+            var infor = listProduct[positionPorduct];
+            newcart.classList.add("item");
+            newcart.dataset.id = c.productId;
+            newcart.innerHTML = `
+           <div class="img">
+            <img
+              src="${infor.imge}"
+              alt=""
+            />
+          </div>
+          <div class="name">${infor.name}</div>
+          <div class="price">$${infor.price * c.qty}</div>
+          <div class="qty">
+            <span class="ninus"><</span>
+            <span>${c.qty}</span>
+            <span class="plus">></span>
+          </div>  
+          `;
+            productcart.appendChild(newcart);
+          });
+        }
+        iconcout.innerHTML = totalProduct;
+      };
+      // addcart();
+      productcart.addEventListener("click", (event) => {
+        var positionclick = event.target;
+        if (
+          positionclick.classList.contains("minus") ||
+          positionclick.classList.contains("plus")
+        ) {
+          var productId = positionclick.parentElement.parentElement.dataset.id;
+          var type = "minus";
+          if (positionclick.classList.contains("plus")) {
+            type = "plus";
+          }
+          changeqty(productId, type);
+        }
+      });
+      const changeqty = (productId, type) => {
+        var positionItemcart = cart.findIndex(
+          (value) => value.productId == productId
+        );
+        if (positionItemcart >= 0) {
+          switch (type) {
+            case "plus":
+              cart[positionItemcart].qty = cart[positionItemcart].qty + 1;
+              break;
+            default:
+              var valuechange = cart[positionItemcart].qty - 1;
+              if (valuechange > 0) {
+                cart[positionItemcart].qty = valuechange;
+              } else {
+                cart.splice(positionItemcart, 1);
+              }
+              break;
+          }
+        }
+        // changeqty();
+        addcarttohtml();
+      };
+
+      const initApp = () => {
+        //get data from json
+        fetch("js.json")
+          .then((response) => response.json())
+          .then((data) => {
+            listProduct = data;
+            console.log(listProduct);
+            adddatatohtml();
+          });
+      };
+      initApp();
+    </script>
+  </body>
+</html>

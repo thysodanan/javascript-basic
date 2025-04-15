@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+      />
+      <title>Document</title>
+      <style>
+          *{
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              
+            }
+            .header{
+                width: 100%;
+                height: 80px;
+                font-size: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                color: aliceblue;
+            }
+            .btn{
+            font-family: "Concert One", sans-serif;
+            border: none;
+            outline: none;
+            padding: 5px 1rem;
+            border-radius: 20px;
+            background: transparent;
+            text-align: left;
+            
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .btn-container{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .container{
+            display: grid;
+            width: 80%;
+            margin: 3rem auto;
+            grid-template-columns: 20% 1fr;
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            /* margin-left: 2rem; */
+            border: 1px solid;
+            
+        }
+        .card>img{
+            width: 100%;
+        }
+        .btn:hover{
+            background-color: aquamarine;
+        }
+        .btn.active{
+            color: aliceblue;
+        }
+        .btn-container > button:focus {
+            color: rgb(211, 201, 201);
+            background-color: blue;
+  
+
+  box-shadow: 0 0 15px 0px rgb(239, 108, 108);
+}
+    </style>
+</head>
+<body>
+    <h4 class="header">Apple Product</h4>
+    <div class="container">
+        <div class="btn-container">
+            <button class="btn" data-id="all">ALL</button>
+            <button class="btn" data-id="iphone">IPhone</button>
+            <button class="btn" data-id="iwatch">Ipad</button>
+            <button class="btn" data-id="mac">Mac</button>
+        </div>
+        <div class="menu">
+
+            <!-- <article class="card">
+                <img src="Img/ipad-air.webp" alt="">
+                <h3 class="name">Mac</h3>
+                <h5 class="price">780$</h5>
+            </article> -->
+        </div>
+    </div>
+    <script>
+        const menuProducts = [
+    {
+      category: "mac",
+      title: "iMac 2017",
+      price: "1300$",
+      imgSrc: "./Img/imac.webp",
+    },
+    {
+      category: "iphone",
+      title: "iPhone 4S",
+      price: "50$",
+      imgSrc: "./Img/iphone-4.webp",
+    },
+    {
+      category: "ipad",
+      title: "iPad Air",
+      price: "700$",
+      imgSrc: "./Img/ipad-air.webp",
+    },
+    {
+      category: "ipad",
+      title: "iPad Mini",
+      price: "600$",
+      imgSrc: "./Img/ipad-mini.webp",
+    },
+    {
+      category: "ipad",
+      title: "iPad Pro",
+      price: "800$",
+      imgSrc: "./Img/ipad-pro.webp",
+    },
+    {
+      category: "iphone",
+      title: "iPhone 3G",
+      price: "40$",
+      imgSrc: "./Img/iphone-3.webp",
+    },
+  
+    {
+      category: "iphone",
+      title: "iPhone 5S",
+      price: "65$",
+      imgSrc: "./Img/iphone-5s.webp",
+    },
+    {
+      category: "mac",
+      title: "macBook Pro",
+      price: "1399$",
+      imgSrc: "./Img/macbook-pro.webp",
+    },
+  
+    {
+      category: "iwatch",
+      title: "iWatch 6 Series",
+      price: "400$",
+      imgSrc: "./Img/iwatch-6.webp",
+    },
+  
+    {
+      category: "mac",
+      title: "macBook Air",
+      price: "800$",
+      imgSrc: "./Img/macbook-air.webp",
+    },
+    {
+      category: "mac",
+      title: "macBook 2015",
+      price: "700$",
+      imgSrc: "./Img/macbook-pro-2015.webp",
+    },
+    {
+      category: "iwatch",
+      title: "iWatch 8 Series",
+      price: "600$",
+      imgSrc: "./Img/iwatch-8.webp",
+    },
+    {
+      category: "iphone",
+      title: "iPhone 14 Pro Max",
+      price: "1200$",
+      imgSrc: "./Img/iphone-14.webp",
+    },
+  ];
+        const menu=document.querySelector(".menu");
+        const allbtn=document.querySelectorAll(".btn")
+        const btncontainer=document.querySelector(".btn-container")
+        allbtn.forEach((btn)=>{
+            btn.addEventListener("click",function(e){
+                 const id=e.target.dataset.id;
+                 console.log(id)
+                 const displayitem=menuProducts.filter((item)=>{
+                    return item.category==id;
+                 })
+                 const display=displayitem.map((p)=>{
+                        return `
+                        <article class="card">
+                <img src="${p.imgSrc}" alt="">
+                <h3 class="name">${p.title}</h3>
+                <h5 class="price">${p.price}</h5>
+            </article> 
+                        `
+                 }).join("")
+                 if(id=="all"){
+                    menu.innerHTML=menuProducts.map((p)=>{
+                        return `
+                        <article class="card">
+                <img src="${p.imgSrc}" alt="">
+                <h3 class="name">${p.title}</h3>
+                <h5 class="price">${p.price}</h5>
+            </article> 
+                        `
+                    }).join("")
+                 }else{
+                     menu.innerHTML=display;
+
+                 }
+            })
+        })
+        const showproduct=menuProducts.map((p)=>{
+            return`
+            <article class="card">
+                <img src="${p.imgSrc}" alt="">
+                <h3 class="name">${p.title}</h3>
+                <h5 class="price">${p.price}</h5>
+            </article>
+            `
+        }).join("");
+        menu.innerHTML=showproduct;
+        
+    </script>
+</body>
+</html>

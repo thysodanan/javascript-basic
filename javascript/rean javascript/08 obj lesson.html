@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const product2={
+      //     name:'name',
+      //     rating: {
+      //         star:45,
+      //         count:87
+      //     },
+      //    fun: function function1(){
+      //         console.log('function inside object');
+      //     }
+      // };
+      // console.log(product2.rating.count);
+      // product2.fun();
+      // const product2={
+      //     name:'name',
+      //     'delivery-tim':'1day',
+      //     rating:{
+      //         name:12,
+      //         cout:23,
+      //     },
+      //     fun: function you(){
+      //         console.log('you are my lucky man');
+      //     }
+
+      // };
+      // console.log(product2);
+      // console.log(product2.name);
+
+      // product2.fun();
+      const product = {
+        name: "name",
+        "delivery-time": "1 dat",
+        rating: {
+          stra: 33,
+          count: 34,
+        },
+        fun: function function1() {
+          console.log('function');
+        },
+      };
+      console.log(product);
+      console.log(product.name);
+      console.log(product['name']);
+      console.log(product['delivery-time']);
+
+      console.log(product.rating);
+      console.log(product.rating.count);
+      product.fun();
+
+      console.log(typeof product);
+      console.log(typeof console.log);
+
+
+     //covert javascript to json
+      console.log(JSON.stringify(product));
+
+      //covert json to javascript
+      const jsonString=JSON.stringify(product);
+      console.log(JSON.parse(jsonString));
+    </script>
+  </body>
+</html>

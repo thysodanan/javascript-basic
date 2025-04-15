@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: absolute;
+            width: 300px;
+            height: 85px;
+            border: 1px solid;
+            background-color: blue;
+           border-radius: 10px;
+           color: white;
+
+        }
+        .box>p{
+            margin-left: 10px;
+        }
+        .box:nth-child(2){
+            background-color: rebeccapurple;
+            top: 400px;
+        }
+        .box:nth-child(3){
+            background-color: rgb(173, 79, 33);
+            top: 450px;
+
+        }
+        .box:last-child{
+            background-color: rgb(2, 169, 13);
+            top: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor porro, et magnam minima facilis deleniti?</p>
+        </div>
+        <div class="box">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor porro, et magnam minima facilis deleniti?</p>
+        </div>
+        <div class="box">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor porro, et magnam minima facilis deleniti?</p>
+        </div>
+        <div class="box">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor porro, et magnam minima facilis deleniti?</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

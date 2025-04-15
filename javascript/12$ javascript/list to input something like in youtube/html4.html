@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Concert One", sans-serif;
+      }
+      form {
+        display: flex;
+        justify-content: space-between;
+      }
+      form > .input {
+        flex-grow: 1;
+      }
+      .list {
+        padding: 2rem 0;
+      }
+      li {
+        border-bottom: 1px solid;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+      }
+      .count {
+        padding: 1rem 0;
+      }
+      .container {
+        width: 500px;
+        height: 300px;
+        border: 1px solid;
+        display: flex;
+        flex-direction: column;
+        padding: 3rem 2rem;
+      }
+      li.active{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <input type="text" class="input" />
+        <button class="add">Add</button>
+      </form>
+      <!-- <ul class="list">
+        <li>item<i class="fa-solid fa-xmark"></i></li>
+      </ul> -->
+      <p class="count">there no such item</p>
+      <button class="clear">clear</button>
+    </div>
+    <script>
+        const container=document.querySelector(".container");
+        const count=document.querySelector(".count")
+        const ul=document.createElement("ul");
+        ul.classList="list";
+        container.insertBefore(ul,count)
+        const add=document.querySelector(".add");
+        add.addEventListener("click",function(e){
+            e.preventDefault();
+            const input=document.querySelector(".input")
+            const li=document.createElement("li")
+            if(!input.value.trim()){
+                alert("Input text brooooo.........")
+                input.focus();
+            }else{
+                li.innerHTML=`${input.value}<i class="fa-solid fa-xmark"></i>` 
+                ul.appendChild(li)
+                countitem();
+            }
+            input.value=""
+
+        })
+    
+        ul.addEventListener("click",function(event){
+            console.dir(event.target)
+            if(event.target.tagName==="LI"){
+                event.target.classList.toggle("active")
+
+                //classList.toggle it will check that if have active class it will delet and if don't have class active it will add class active
+            }
+
+            if(event.target.tagName==="I"){
+
+                // e.target.parentElement.remove();
+                event.target.parentElement.remove();
+                countitem();
+            }
+        }) 
+
+        const clear=document.querySelector(".clear")
+        clear.addEventListener("click",function(){
+             const ul=document.querySelector(".list")
+             ul.innerHTML="";
+             countitem();
+        })
+        function countitem(){
+            const ul=document.querySelector(".list").childElementCount;
+            const verb=ul>1?"s":""
+            const item=ul>0?ul:"no such"
+            const singular=ul>1?"are":"is";
+            count.innerHTML=`there ${singular} ${item} item ${verb}`
+        }
+        countitem();
+        
+    </script>
+  </body>
+</html>

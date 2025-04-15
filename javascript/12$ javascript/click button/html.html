@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Concert One", sans-serif;
+      }
+      .hero-section {
+        background: linear-gradient(
+          to right top,
+          rgb(35, 203, 46),
+          rgb(213, 222, 29)
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+        /* background-image: url("https://cdn.pixabay.com/photo/2023/09/14/08/30/agriculture-8252527_1280.jpg"); */
+        /* background-repeat: no-repeat; */
+        /* background-position: center; */
+        /* background-size: cover; */
+        font-family: "Concert One", sans-serif;
+      }
+      .show-btn {
+        transition: all 0.2s ease-in-out;
+        font-family: "Concert One", sans-serif;
+        border-radius: 10px;
+        border: none;
+        padding: 2rem 4rem;
+        font-size: 2rem;
+        /* position: absolute; */
+        /* top: 0; */
+        box-shadow: 0 0 10px white;
+        background-color: rgb(57, 131, 14);
+        font-size: 1.5rem;
+        color: aliceblue;
+        /* border: 2px solid; */
+      }
+      .bg-overlay {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        inset: 0;
+        font-size: 2rem;
+        background-color: rgba(145, 152, 158, 0.539);
+      }
+      .model {
+        position: relative;
+        width: 400px;
+        height: 250px;
+        background-color: rgb(15, 104, 61);
+        border-radius: 10px;
+        font-size: 3rem;
+        color: aliceblue;
+
+        align-content: center;
+        text-align: center;
+        opacity: 0;
+      }
+      .model.active {
+        opacity: 1;
+      }
+      .close-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background-color: transparent;
+        border: none;
+        color: aliceblue;
+        font-size: 1.5rem;
+      }
+      .model > h3 {
+        font-size: 2rem;
+        color: aliceblue;
+      }
+      .h{
+        font-size: 6rem;
+        color: rgb(12, 18, 24);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero-section">
+      <h1 class="h">Welcom to Mr Nanting Channel</h1>
+      <!-- <button class="show-btn">Click</button> -->
+      <!-- Model box -->
+      <div class="bg-overlay">
+        <div class="model">
+          <h3>WELCOM BRO...</h3>
+          <!-- <button class="close-btn"><i class="fa-solid fa-xmark"></i></button> -->
+          <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>

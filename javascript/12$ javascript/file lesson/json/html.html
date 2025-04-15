@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Hello bro</h2>
+    <button id="btn">click</button>
+    <div id="container"></div>
+  </body>
+  <script>
+    const btn = document.getElementById("btn");
+    const container = document.getElementById("container");
+    btn.addEventListener("click", function () {
+      const ourrequest = new XMLHttpRequest();
+      ourrequest.open(
+        "GET",
+        "https://jsonplaceholder.typicode.com/users",
+        true
+      );
+      ourrequest.onload = () => {
+        const res = ourrequest.responseText;
+        const data = JSON.parse(res);
+        container.innerHTML=data
+          .map(({ name, email }) => {
+            return `
+                <div>
+        <h3>${name}</h3>
+        <p>${email}</p>
+    </div>
+                
+                `;
+          })
+          .join("");
+      };
+      ourrequest.send();
+    });
+  </script>
+</html>

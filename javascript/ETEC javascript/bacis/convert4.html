@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <title>Document</title>
+</head>
+<body>
+  <div class="container shadow mt-4 p-2">
+    <div class="row">
+      <div class="col-xl-6">
+        <div class="form-group">
+          <label for="productCode">Input code of Product</label>
+          <input type="text" id="productCode" class="id form-control" />
+          <label for="productName">Input Name of Product</label>
+          <input type="text" id="productName" class="Name form-control" />
+          <label for="productPrice">Input Price of Product</label>
+          <input type="text" id="productPrice" class="price form-control" />
+          <button class="btn btn-primary mt-2">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="container table table-hover table-striped mt-5">
+    <thead>
+      <tr class="table-dark">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody class="show-data">
+      <!-- Product rows will be inserted here -->
+    </tbody>
+    <tfoot class="footer">
+      <tr>
+        <td colspan="3" align="right">Total</td>
+        <td class="pay">0</td>
+      </tr>
+    </tfoot>
+  </table>
+  <script>
+    const items = [];
+
+    function save() {
+      const code = document.querySelector("#productCode");
+      const name = document.querySelector("#productName");
+      const price = document.querySelector("#productPrice");
+      const btn = document.querySelector(".btn");
+
+      btn.addEventListener("click", function () {
+        if (name.value.trim() === "") {
+          alert("Input name of the product");
+          name.focus();
+          return;
+        } else if (price.value.trim() === "" || isNaN(price.value) || parseFloat(price.value) <= 0) {
+          alert("Input valid price");
+          price.focus();
+          return;
+        }
+
+        items.push({ id: code.value, name: name.value, price: parseFloat(price.value) });
+        getProducts();
+        autoId();
+        findTotal();
+
+        name.value = "";
+        price.value = "";
+        name.focus();
+      });
+    }
+
+    function getProducts() {
+      const showData = document.querySelector(".show-data");
+      let txt = "";
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        txt += `
+          <tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.price.toFixed(2)}</td>
+            <td>
+              <button class="btn btn-outline-danger btn-delete" data-index="${i}">Delete</button>
+              <button class="btn btn-outline-warning btn-edit" data-index="${i}">Edit</button>
+            </td>
+          </tr>
+        `;
+      }
+
+      showData.innerHTML = txt;
+      attachEventListeners();
+    }
+
+    function autoId() {
+      const code = document.querySelector("#productCode");
+      code.value = items.length + 1;
+    }
+
+    function findTotal() {
+      const pay = document.querySelector(".pay");
+      const sum = items.reduce((total, item) => total + item.price, 0);
+      pay.textContent = sum.toFixed(2);
+    }
+
+    function attachEventListeners() {
+      document.querySelectorAll(".btn-delete").forEach(button => {
+        button.addEventListener("click", function () {
+          const index = button.getAttribute("data-index");
+          items.splice(index, 1);
+          getProducts();
+          findTotal();
+        });
+      });
+
+      document.querySelectorAll(".btn-edit").forEach(button => {
+        button.addEventListener("click", function () {
+          const index = button.getAttribute("data-index");
+          const item = items[index];
+          document.querySelector("#productCode").value = item.id;
+          document.querySelector("#productName").value = item.name;
+          document.querySelector("#productPrice").value = item.price;
+          items.splice(index, 1);
+          getProducts();
+          findTotal();
+        });
+      });
+    }
+
+    save();
+    autoId();
+  </script>
+</body>
+</html>

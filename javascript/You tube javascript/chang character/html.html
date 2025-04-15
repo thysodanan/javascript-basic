@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <h2>I am Web deverloper</h2> -->
+    </div>
+    <script>
+      const container = document.querySelector(".container");
+      const arr = ["Web deverloper", "student", "Instructor"];
+      var arrindex = 0;
+      var charindex = 0;
+      update();
+      function update() {
+        charindex++;
+        container.innerHTML = `
+            <h2>I am ${arr[arrindex].slice(0, 1) === "I" ? "an  " : "a  "}${arr[
+          arrindex
+        ].slice(0, charindex)}</h2>
+            `;
+        if (charindex === arr[arrindex].length) {
+          arrindex++;
+          charindex = 0;
+        }
+        if (arrindex === arr.length) {
+          arrindex = 0;
+        }
+        setTimeout(() => {
+          update();
+        }, 400);
+      }
+    </script>
+  </body>
+</html>

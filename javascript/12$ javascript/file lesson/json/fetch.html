@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+  </body>
+  <script>
+    const url = "https://jsonplaceholder.typicode.com/users";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => showing(data))
+      .catch((err) => console.log(err));
+    function showing(data) {
+      const div = document.querySelector("div");
+      div.innerHTML = data
+        .map((d) => {
+          const { email: name } = data;
+          return `
+            <p>${name}</p>
+            `;
+        })
+        .join("");
+    }
+  </script>
+</html>

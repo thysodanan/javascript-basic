@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+      />
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        font-family: "Concert One", sans-serif;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to right bottom, rgb(230, 244, 39), rgb(19, 226, 226));
+      }
+      .container {
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+        width: 600px;
+        height: 250px;
+        padding: 2rem;
+        position: relative;
+      }
+      .img {
+        height: 50px;
+        width: 50px;
+      }
+      .img > img {
+        border: 1px solid rgb(119, 148, 14);
+        box-shadow: 0 0 5px;
+        height: 100%;
+        border-radius: 50%;
+        width: 100%;
+      }
+      .person-profile {
+        display: flex;
+
+        padding: 1rem 0;
+        border-bottom: 1px solid;
+      }
+      .name-job {
+        margin-left: 2rem;
+      }
+      .text {
+        padding-top: 1rem;
+      }
+      .up-btn,
+      .down-btn {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 3rem;
+        color: aliceblue;
+      }
+      .up-btn {
+        top: -60px;
+        left: 50%;
+      }
+      .down-btn {
+        bottom: -60px;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <article>
+        <div class="person-profile">
+          <div class="img">
+            <img
+              src="https://media.istockphoto.com/id/2007576256/photo/portrait-of-a-handsome-man-waiting-by-the-office-building-and-reading-a-text-message.jpg?s=2048x2048&w=is&k=20&c=QLnPuPdfcgetdpB3OPYFEVS0QAIAPvrnBByi3_61Rdc="
+              alt=""
+            />
+          </div>
+          <div class="name-job">
+            <h1 class="name">Thy sodanan</h1>
+            <span class="position">IT Support</span>
+          </div>
+        </div>
+        <div class="text">
+          <p>
+            apple  quae  cumque esse debitisam obcaecati dignissimos soluta delectus quaerat distinctio possimus similique, laborum recusandae odit dicta temporibus,
+          </p>
+        </div>
+      </article>
+      <button class="up-btn"><i class="fa-solid fa-angle-up"></i></button>
+      <button class="down-btn"><i class="fa-solid fa-angle-down"></i></button>
+    </section>
+    <script>
+      const people = [
+        {
+          Name: "thy sodanan",
+          img: "https://media.istockphoto.com/id/598221526/photo/portrait-of-laughing-young-man-looking-at-camera-in-park.jpg?s=2048x2048&w=is&k=20&c=nT1NBZpsVlNP-OYYvaU6pU-1wA5p8i4bWJ8iwoquKlo=",
+          position:"IT Support",
+          text: "He will be containue to study at aboard soon and get a lot of money to support his farmily and make his parent proud with him  quaerat distinctio possimus similique, laborum recusandae odit dicta temporibus,",
+        },
+        {
+          Name: "Ny leangmeng",
+          img: "https://cdn.pixabay.com/photo/2020/03/11/10/08/camera-4921646_960_720.jpg",
+          position:"Student",
+          text: "debitisam obcaecati dignissimos soluta delectus quaerat distinctio possimus similique, laborum recusandae odit dicta temporibus,apple  quae  cumque esse debitisam obcaecati dignissimos soluta delectus quaerat distinctio possimus similique, laborum recusandae odit dicta temporibus,",
+        },
+        {
+          Name: "on dara",
+          img: "https://cdn.pixabay.com/photo/2024/05/24/15/37/ai-generated-8785309_960_720.jpg",
+          position:"Lawyer",
+          
+          text: "apple  quae  cumque esse debitisam obcaecati dignissimos soluta delectus quaerat distinctio possimus similique, laborum recusandae odit dicta temporibus,apple  quae  cumque esse debitisam obcaecati dignissimos soluta delectus quaerat distinctio possimus similique, laborum recusandae odit dicta temporibus,",
+        },
+        {
+          Name: "tit sokkhom",
+          img: "https://cdn.pixabay.com/photo/2024/08/20/14/27/ai-generated-8983492_960_720.jpg",
+          position:"teacher",
+          text: "Angkor Wat, a 12th-century Cambodian temple complex, showcases stunning Khmer architecture and intricate bas-reliefs. Originally a Hindu temple, it now stands as a major Buddhist site and cultural icon.",
+        },
+      ];
+      const img=document.querySelector(".img>img")
+      const position=document.querySelector(".position")
+      const text=document.querySelector(".text")
+      const Name=document.querySelector(".name")
+      const nextbtn=document.querySelector(".down-btn")
+      const upbtn=document.querySelector(".up-btn");
+    //   console.log(img,position)
+      let counter=0;
+      function showcard(p){
+        const person=people[counter]
+        img.src=person.img;
+        Name.innerHTML=person.Name;
+        position.innerHTML=person.position;
+        text.innerHTML=person.text;
+      }
+      nextbtn.onclick=function(){
+        if(counter==people.length-1){
+            counter=0;
+        }else{
+            counter++;
+        }
+        showcard(counter);
+        // const person=people[counter]
+        // img.src=person.img;
+        // Name.innerHTML=person.Name;
+        // position.innerHTML=person.position;
+        // text.innerHTML=person.text;
+      }
+      upbtn.onclick=function(){
+        if(counter==0){
+            counter=people.length-1;
+        }else{
+            counter--;
+        }
+        showcard(counter);
+        // const person=people[counter]
+        // img.src=person.img;
+        // Name.innerHTML=person.Name;
+        // position.innerHTML=person.position;
+        // text.innerHTML=person.text;
+      }
+    </script>
+  </body>
+</html>

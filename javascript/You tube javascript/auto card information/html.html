@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        position: absolute;
+        top: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+    .container{
+        border-radius: 20px;
+        box-shadow: 0 0 5px rgb(6, 87, 7);
+        position: relative;
+        width: 500px;
+        height: 300px;
+        padding:  1rem 1rem;
+        color: aliceblue;
+        background-color: rgb(89, 192, 82);
+    }
+    .text{
+        position: absolute;
+        top: 35%;
+    }
+    .name{
+        position: absolute;
+        top: 70%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <img
+        src="https://cdn.pixabay.com/photo/2024/09/16/23/19/ai-generated-9052568_960_720.jpg"
+        alt=""
+      />
+      <h3 class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+        natus magnam tempora, repellat amet id tempore modi fuga pariatur
+        deleniti.
+      </h3>
+      <p class="name">Ny Leangmeng</p>
+    </div>
+    <script>
+        const arr=[
+            {
+                name:"thy sodanan",
+                img:"https://cdn.pixabay.com/photo/2024/09/16/23/19/ai-generated-9052568_960_720.jpg",
+                text:"My name is thy sodanan ,I'm 18 years old and currently study at RUPP Engaging with ng of the human experience."
+            },
+            {
+                name:"Ny leangmeng",
+                img:"https://cdn.pixabay.com/photo/2021/06/04/10/29/man-6309454_1280.jpg",
+                text:"Reading ounication more effective. Engaging with various genres fosters empathy as readers encounter diverse characters and situations."
+            },
+            {
+                name:"On dara",
+                img:"https://cdn.pixabay.com/photo/2024/09/01/04/54/ai-generated-9012920_960_720.jpg",
+                text:"which Incorporating a mix of cardiovascular, strength, and flexibility training ensures comprehensive health benefits. Whether it's a bri"
+            },
+        ];
+        let arrindex=0;
+        const imgel=document.querySelector("img")
+        const nameel=document.querySelector(".name")
+        const textel=document.querySelector(".text")
+        function updatecard(){
+            const {name,text,img}=arr[arrindex];
+            imgel.src=img
+            nameel.innerText=name
+            textel.innerText=text
+            arrindex++;
+            if(arrindex===arr.length){
+                arrindex=0;
+            }
+            setTimeout(()=>{
+                updatecard()
+            },1000)
+        }
+        updatecard();
+    </script>
+  </body>
+</html>

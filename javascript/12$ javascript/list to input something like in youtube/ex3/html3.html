@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+      />
+      <title>Document</title>
+    </head>
+    <style>
+      body{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to right bottom,rgb(185, 49, 4),rgb(202, 15, 181));
+      }
+      .container{
+        font-family: "Concert One", sans-serif; 
+        background: linear-gradient(to right bottom,rgb(113, 39, 14),rgb(100, 6, 89));
+        /* height: 200px; */
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+         background-color: rgb(236, 15, 15); 
+        
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgb(220, 37, 40);
+      }
+      form{
+      flex-grow: 1;
+
+    }
+    .input{
+      background: rgba(159, 12, 12, 0.452);
+        border: none;
+        border: 1px solid black;
+        color: aliceblue;
+        outline: none;
+        padding: 10px 5px;
+        border-radius: 3px;
+        font-size: 1rem;
+        background: transparent;
+    }
+    .add{
+      border: none;
+        border: 1px solid black;
+        padding: 10px 1rem;
+        border-radius: 3px;
+        font-size: 1rem;
+        background: transparent;
+        /* font-size: 1rem; */
+        padding: 10px 4px;
+    }
+    .clear{
+        background-color: rgb(186, 122, 11);
+        padding: 5px 0;
+        border-radius: 10px;
+        color: aliceblue;
+        font-size: 1rem;
+        border: 1px solid rgb(204, 115, 13);
+
+    }
+    /* ul{
+        border-bottom: 1px solid;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    li{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+    } */
+    li{
+        list-style: none;
+      }
+      .list{
+    
+        display: flex;
+        flex-direction: column-reverse
+    }
+    li{
+        margin-left: -2.3rem;
+        border-bottom: 1px solid;
+        /* margin-left:-1.5rem; */
+        /* color: aliceblue; */
+        color: aliceblue;
+        display: flex;
+        opacity: 1;
+        margin-top: 10px;
+        justify-content: space-between;
+        /* margin: 5px 0; */
+    }
+    li.complete{
+          /* margin-left: -2.3rem; */
+        opacity: 0.5;
+        color: rgb(59, 60, 61);
+      }
+      .count-text{
+        color: rgb(173, 127, 65);
+      }
+  </style>
+  <body>
+    <div class="container">
+      <form>
+        <input type="text"  class="input" />
+        <button class="add">add</button>
+      </form>
+      <!-- <ul class="list">
+        <li>item<i class="fa-solid fa-xmark"></i></li>
+      </ul> -->
+      <p class="count-text">Count item</p>
+      <button class="clear">Clear</button>
+      <script src="app3.js"></script>
+    </div>
+  </body>
+</html>

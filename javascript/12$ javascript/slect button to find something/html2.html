@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+      />
+      <title>Document</title>
+    </head>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+  font-family: "Concert One", sans-serif;
+      /* background-color: rgb(220, 216, 216); */
+        /* background: linear-gradient(to right top,rgb(148, 183, 12),rgb(25, 143, 234)); */
+    }
+    .text-container{
+        width: 100%;
+
+        color: aliceblue;
+        font-size: 3.5rem;
+        background-color: black;
+        padding: 2rem 0;
+        text-align: center;
+
+        
+        margin-bottom: 5rem;
+        
+    }
+    .container{
+        margin: 0 auto;
+        width: 80%;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 20% 1fr;
+    }
+    .btn-container{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .btn{
+      font-family: "Concert One", sans-serif;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 6px 1rem;
+        text-align: left;
+        border-radius: 30px;
+        font-size: 1.5rem;
+        /* color: aliceblue; */
+    }
+    .btn:hover{
+        /* background-color: rgb(99, 188, 220); */
+        background-color: rgb(216, 235, 255);
+    }
+    .btn.active{
+        color: aliceblue;
+        /* background-color: dodgerblue; */
+        background-color: rgb(47, 10, 209);
+    }
+    .menu{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+    }
+    .card{
+        position: relative;
+        display: flex;
+        border-radius: 20px;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        box-shadow: 0 0 4px ;
+    }
+    .img{
+        width: 250px;
+        margin-top: -20px;
+        
+    }
+    .price{
+        position: absolute;
+        right: 10px;
+    background-color: blue;
+    padding: 5px 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    color: aliceblue;
+    }
+    .card-name{
+        position: absolute;
+        bottom: 3rem;
+    }
+</style>
+<body>
+    <h2 class="text-container">Apple Product</h2>
+    <div class="container">
+        <div class="btn-container">
+            <button class="btn active" data-id="all">All</button>
+            <button class="btn" data-id="iphone">iPhone</button>
+            <button class="btn" data-id="iwatch">iwatch</button>
+            <button class="btn" data-id="mac">Mac</button>
+        </div>
+        <div class="menu">
+            <!-- <article class="card">
+                <img src="Img/imac.webp" class="img" alt="">
+                <h2 class="card-name">Mac book</h2>
+                <span class="price">300$</span>
+            </article> -->
+           
+        </div>
+    </div>
+    <script>
+    const menuproduct=[
+    {
+      category: "mac",
+      title: "iMac 2017",
+      price: "1300$",
+      imgSrc: "./Img/imac.webp",
+    },
+    {
+      category: "iphone",
+      title: "iPhone 4S",
+      price: "50$",
+      imgSrc: "./Img/iphone-4.webp",
+    },
+    {
+      category: "ipad",
+      title: "iPad Air",
+      price: "700$",
+      imgSrc: "./Img/ipad-air.webp",
+    },
+    {
+      category: "ipad",
+      title: "iPad Mini",
+      price: "600$",
+      imgSrc: "./Img/ipad-mini.webp",
+    },
+    {
+      category: "ipad",
+      title: "iPad Pro",
+      price: "800$",
+      imgSrc: "./Img/ipad-pro.webp",
+    },
+    {
+      category: "iphone",
+      title: "iPhone 3G",
+      price: "40$",
+      imgSrc: "./Img/iphone-3.webp",
+    },
+  
+    {
+      category: "iphone",
+      title: "iPhone 5S",
+      price: "65$",
+      imgSrc: "./Img/iphone-5s.webp",
+    },
+    {
+      category: "mac",
+      title: "macBook Pro",
+      price: "1399$",
+      imgSrc: "./Img/macbook-pro.webp",
+    },
+  
+    {
+      category: "iwatch",
+      title: "iWatch 6 Series",
+      price: "400$",
+      imgSrc: "./Img/iwatch-6.webp",
+    },
+  
+    {
+      category: "mac",
+      title: "macBook Air",
+      price: "800$",
+      imgSrc: "./Img/macbook-air.webp",
+    },
+    {
+      category: "mac",
+      title: "macBook 2015",
+      price: "700$",
+      imgSrc: "./Img/macbook-pro-2015.webp",
+    },
+    {
+      category: "iwatch",
+      title: "iWatch 8 Series",
+      price: "600$",
+      imgSrc: "./Img/iwatch-8.webp",
+    },
+    {
+      category: "iphone",
+      title: "iPhone 14 Pro Max",
+      price: "1200$",
+      imgSrc: "./Img/iphone-14.webp",
+    },
+    ]
+    const menu=document.querySelector(".menu")
+    const allbtn=document.querySelector(".btn-container")
+    const btns=document.querySelectorAll(".btn");
+    allbtn.addEventListener("click",(e)=>{
+      const btnid=e.target.dataset.id;
+      btns.forEach((btn)=>{ //btn is repersent all item in btn container
+        btn.classList.remove("active")
+        if(btnid){
+          e.target.classList.add("active");
+        }
+      })
+    })
+    btns.forEach((btn)=>{
+      btn.addEventListener("click",(e)=>{
+        const id=e.target.dataset.id;
+        const display=menuproduct.filter((items)=>{
+          return items.category==id;
+        })
+        // console.log(display)
+        const displaymenu=display.map((p)=>{
+          return `<article class="card">
+                <img src="${p.imgSrc}" class="img" alt="${p.title}">
+                <h2 class="card-name">${p.title}</h2>
+                <span class="price">${p.price}</span>
+            </article>`
+        }).join("")
+        if(id=="all"){
+
+          menu.innerHTML=menuproduct.map((p)=>{
+            return `<article class="card">
+              <img src="${p.imgSrc}" class="img" alt="${p.title}">
+              <h2 class="card-name">${p.title}</h2>
+              <span class="price">${p.price}</span>
+              </article>`
+            }).join("")
+          }else{
+            menu.innerHTML=displaymenu;
+            
+          }
+          
+        })
+      })
+      
+    window.addEventListener("DOMContentLoaded",()=>{
+        const showproduct=menuproduct.map((p)=>{
+            return `<article class="card">
+                <img src="${p.imgSrc}" class="img" alt="${p.title}">
+                <h2 class="card-name">${p.title}</h2>
+                <span class="price">${p.price}</span>
+            </article>`
+        }).join("")
+        menu.innerHTML=showproduct;
+    })
+
+
+
+
+
+
+
+        // const arr=[
+        //     {id:12,name:"nan"},
+        //     {id:12,name:"nan"},
+        //     {id:12,name:"sa"},
+        // ];
+        // const newarr=arr.filter((item)=>{
+        //     return item.name=="nan";//will check that if name==nan it will show obj that have name:nan
+        // })
+        // const threearr=arr.map((item)=>{
+        //     return `<h2>${item.name}</h2>`;
+        // }).join("");//join covert obj in arr to string
+        // console.log(newarr)
+        // console.log(threearr)
+    </script>
+</body>
+</html>

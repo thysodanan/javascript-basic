@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        font-family: "Concert One", sans-serif;
+      }
+      li {
+        list-style: none;
+      }
+      .header {
+        background-color: black;
+        color: aliceblue;
+        width: 100%;
+        padding: 2rem 0;
+        display: flex;
+        font-size: 3rem;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .text {
+        margin-left: 26rem;
+      }
+      .i {
+        position: relative;
+      }
+      .count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        color: black;
+        background-color: aliceblue;
+        position: absolute;
+        top: -12px;
+        right: 2px;
+        font-size: 19px;
+      }
+      .input {
+        font-family: "Concert One", sans-serif;
+        width: 50%;
+        margin: 3rem auto 1rem auto;
+        padding: 1rem 10px;
+        border-radius: 30px;
+        /* text-align: center; */
+        display: block;
+      }
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.8rem;
+      }
+      .btn {
+        /* margin-top: 3rem; */
+        border: none;
+        font-family: "Concert One", sans-serif;
+        padding: 10px 2rem;
+        border: 1px solid black;
+        border-radius: 30px;
+        font-size: 1.2rem;
+      }
+      .btn-container > button:hover {
+        background-color: rgb(133, 235, 235);
+      }
+      .btn-container > button:focus {
+        color: aliceblue;
+        box-shadow: 0 0 5px rgb(6, 9, 89);
+        background-color: blue;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 3rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .card {
+        width: 300px;
+        height: 350px;
+        padding: 3rem 0;
+        position: relative;
+        border: 1px solid;
+      }
+      .card > img {
+        width: 100%;
+        height: 100%;
+      }
+      .name {
+        position: absolute;
+        left: 50%;
+        bottom: 13%;
+        font-size: 2rem;
+        transform: translateX(-50%);
+      }
+      .price {
+        position: absolute;
+        top: 7%;
+        right: 2%;
+        width: 89px;
+        height: 40px;
+        background-color: rgb(202, 14, 46);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: aliceblue;
+        border-radius: 30px;
+      }
+      .btn1 {
+        border: none;
+        position: absolute;
+        bottom: 4%;
+        left: 50%;
+        background-color: transparent;
+        transform: translateX(-50%);
+        padding: 4px 2rem;
+        background-color: blue;
+      }
+      .slid {
+        position: absolute;
+        top: 8%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        right: 0;
+        opacity: 0;
+        width: 30%;
+        height: 300px;
+        background-color: rgb(3, 3, 3);
+        color: aliceblue;
+      }
+      .slid.hide {
+        opacity: 1;
+      }
+      .btn2 {
+        padding: 3px 10px;
+        border: none;
+        font-size: 14px;
+      }
+      .total {
+        width: 100%;
+        background-color: red;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+      }
+      .btn-pay {
+        display: block;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding: 4px 5px;
+      }
+      .scan-container {
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .scan {
+        opacity: 0;
+        position: relative;
+        top: 20%;
+        left: 50%;
+        overflow: hidden;
+        transform: translate(-50%, -50%);
+        width: 250px;
+        height: 350px;
+        z-index: 111;
+      }
+      .scan > .i2 {
+        border: none;
+        background: transparent;
+        font-size: 1.4rem;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+      }
+
+      .scan > img:not(.active) {
+        left: -100%;
+      }
+      .scan > img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .btnnext {
+        left: 100%;
+      }
+      .back-btn {
+        position: absolute;
+        top: 50%;
+        left: 3%;
+      }
+      .next-btn,
+      .back-btn {
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+      }
+      .next-btn {
+        position: absolute;
+        top: 50%;
+        right: 3%;
+      }
+      @keyframes nextout {
+        form {
+          left: 0%;
+        }
+        to {
+          left: -100%;
+        }
+      }
+      @keyframes nextin {
+        form {
+          left: 100%;
+          
+        }
+        to {
+          left: 0%;
+        }
+      }
+      @keyframes backout {
+        form {
+          left: 0%;
+        }
+        to {
+          left: 100%;
+        }
+      }
+      @keyframes backin {
+        form {
+          left: -100%;
+        }
+        to {
+          left: 0%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <ul class="text">
+        <li>Apple Product</li>
+      </ul>
+      <ul class="i">
+        <li class="count">0</li>
+        <li>
+          <i class="fa-solid fa-cart-shopping btn-count" class="btn-count"></i>
+        </li>
+      </ul>
+    </div>
+    <form>
+      <input type="text" class="input" />
+    </form>
+    <div class="btn-container">
+      <!-- <button class="btn" data-id="">ALL</button>
+      <button class="btn">iphone</button> -->
+    </div>
+    <div class="container">
+      <!-- <article class="card">
+        <img src="Img/imac.webp" alt="" />
+        <h3 class="name">Mac</h3>
+        <h4 class="price">345$</h4>
+      </article> -->
+      <!-- <button class="btn btn-danger"></button> -->
+    </div>
+    <div class="slid">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr class="table-dark">
+            <th>Name</th>
+            <th>price</th>
+            <th>Img</th>
+            <th>active</th>
+          </tr>
+        </thead>
+        <tbody class="data">
+          <!-- <tr>
+            <td>iphone</td>
+            <td>price</td>
+            <td><img src="Img/ipad-air.webp" width="40px" height="40px" border-radius="50%" alt=""></td>
+            <td>
+              <button class="btn btn2 btn-danger">Cancel</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+      <div class="total">
+        <h3>Total PayMent:</h3>
+        <h3 class="pay">456$</h3>
+        <button class="btn-pay">scan for pay money</button>
+      </div>
+    </div>
+    <div class="scan-container">
+      <div class="scan">
+        <img class="active" src="photo_2024-09-13_21-51-02.jpg" alt="" />
+        <img src="photo_2024-09-14_11-54-13.jpg" alt="" />
+        <button class="i2"><i class="fa-solid fa-xmark"></i></button>
+        <button class="next-btn">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <button class="back-btn">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+      </div>
+    </div>
+    <script>
+      const menuProducts = [
+        {
+          category: "mac",
+          title: "iMac 2017",
+          price: "1300$",
+          imgSrc: "./Img/imac.webp",
+        },
+        {
+          category: "iphone",
+          title: "iPhone 4S",
+          price: "50$",
+          imgSrc: "./Img/iphone-4.webp",
+        },
+        {
+          category: "ipad",
+          title: "iPad Air",
+          price: "700$",
+          imgSrc: "./Img/ipad-air.webp",
+        },
+        {
+          category: "ipad",
+          title: "iPad Mini",
+          price: "600$",
+          imgSrc: "./Img/ipad-mini.webp",
+        },
+        {
+          category: "ipad",
+          title: "iPad Pro",
+          price: "800$",
+          imgSrc: "./Img/ipad-pro.webp",
+        },
+        {
+          category: "iphone",
+          title: "iPhone 3G",
+          price: "40$",
+          imgSrc: "./Img/iphone-3.webp",
+        },
+
+        {
+          category: "iphone",
+          title: "iPhone 5S",
+          price: "65$",
+          imgSrc: "./Img/iphone-5s.webp",
+        },
+        {
+          category: "mac",
+          title: "macBook Pro",
+          price: "1399$",
+          imgSrc: "./Img/macbook-pro.webp",
+        },
+
+        {
+          category: "iwatch",
+          title: "iWatch 6 Series",
+          price: "400$",
+          imgSrc: "./Img/iwatch-6.webp",
+        },
+
+        {
+          category: "mac",
+          title: "macBook Air",
+          price: "800$",
+          imgSrc: "./Img/macbook-air.webp",
+        },
+        {
+          category: "mac",
+          title: "macBook 2015",
+          price: "700$",
+          imgSrc: "./Img/macbook-pro-2015.webp",
+        },
+        {
+          category: "iwatch",
+          title: "iWatch 8 Series",
+          price: "600$",
+          imgSrc: "./Img/iwatch-8.webp",
+        },
+        {
+          category: "iphone",
+          title: "iPhone 14 Pro Max",
+          price: "1200$",
+          imgSrc: "./Img/iphone-14.webp",
+        },
+      ];
+      function display(arry) {
+        const btnpay = document.querySelector(".btn-pay");
+        const i = document.querySelector(".i2");
+        const scan = document.querySelector(".scan");
+        const scancontainer = document.querySelector(".scan-container");
+        btnpay.addEventListener("click", function (e) {
+          e.preventDefault();
+          scan.style.opacity="1";
+          scancontainer.style.display = "block";
+        });
+        i.addEventListener("click", function (e) {
+          e.preventDefault();
+          scan.style.opacity="0";
+          scan.classList.remove("active");
+          scancontainer.style.display = "none"; 
+        });
+        const container = document.querySelector(".container");
+
+        const showproduct = arry
+          .map((item) => {
+            return `
+            <article class="card">
+        <img src="${item.imgSrc}" alt="" />
+        <h3 class="name">${item.title}</h3>
+        <h4 class="price">${item.price}</h4>
+         <button class="btn1">Buy</button>
+      </article>
+        `;
+          })
+          .join("");
+        container.innerHTML = showproduct;
+      }
+      display(menuProducts);
+      function displaybtn() {
+        const btnall = document.querySelector(".btn-container");
+        // console.log(btnall);
+        const showbtn = menuProducts.map((btnitem) => btnitem.category);
+        const Button = new Set(showbtn);
+        const newbtn = ["All", ...Button];
+        const showallbtn = newbtn
+          .map((p) => {
+            return `
+              <button class="btn" data-id="${p}">${p}</button>
+        `;
+          })
+          .join("");
+        btnall.innerHTML = showallbtn;
+
+        const btn = document.querySelectorAll(".btn");
+        btn.forEach((btns) => {
+          btns.addEventListener("click", function () {
+            const id = this.dataset.id;
+            const showitemproduct = menuProducts.filter((i) => {
+              return i.category === id;
+            });
+            if (id === "All") {
+              display(menuProducts);
+            } else {
+              display(showitemproduct);
+            }
+          });
+          // clickbtnbuy();
+        });
+      }
+      displaybtn();
+      function searchproduct() {
+        const input = document.querySelector(".input");
+        input.addEventListener("keyup", function () {
+          const inputvalue = input.value.toLowerCase();
+          const value = menuProducts.filter((u) => {
+            return u.title.toLocaleLowerCase().includes(inputvalue);
+          });
+          display(value);
+        });
+      }
+      searchproduct();
+      const btncount = document.querySelector(".btn-count");
+      const slid = document.querySelector(".slid");
+      btncount.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (slid.classList.contains("hide")) {
+          slid.classList.remove("hide");
+        } else {
+          slid.classList.add("hide");
+        }
+      });
+      const count = document.querySelector(".count");
+      const btnbuy = document.querySelectorAll(".btn1");
+      const data = document.querySelector(".data");
+      const pay = document.querySelector(".pay");
+      // var counter = 1;
+      var sum = 0;
+      var text = "";
+      function clickbtnbuy() {
+        btnbuy.forEach((btn, i) => {
+          btn.addEventListener("click", function () {
+            // count.innerHTML = counter;
+            // counter++;
+            sum += parseFloat(menuProducts[i].price);
+            text += `
+          <tr class="tr">
+            <td>${menuProducts[i].title}</td>
+            <td>${menuProducts[i].price}</td>
+            <td><img src="${menuProducts[i].imgSrc}" width="40px" height="40px" border-radius="50%" alt=""></td>
+            <td class="delete"> 
+              <button class="btn btn2 btn-danger">Cancel</button>
+            </td>
+          </tr>
+          `;
+
+            data.innerHTML = text;
+            countproduct();
+            pay.innerHTML = sum + "$";
+            const btndelete = document.querySelectorAll(".delete");
+            const tr = document.querySelector(".tr");
+            console.dir(btndelete);
+            const Delete = document.querySelector(".delete");
+            Delete.addEventListener("click", function (e) {
+              console.dir(e.target);
+              if (e.target.tagName === "BUTTON") {
+                tr.innerHTML = "";
+                countproduct();
+              }
+            });
+          });
+        });
+      }
+      clickbtnbuy();
+      function countproduct() {
+        const addproduct = document.querySelector(".data").childElementCount;
+        count.innerHTML = addproduct;
+      }
+      countproduct();
+      const img = document.querySelectorAll(".scan>img");
+      const next = document.querySelector(".next-btn");
+      const back = document.querySelector(".back-btn");
+      let c = 0;
+      next.addEventListener("click", function () {
+        img[c].style.animation = "nextout 0.8s forwards";
+        if (c >= img.length - 1) {
+          c = 0;
+        } else {
+          c++;
+        }
+        img[c].style.animation = "nextin 0.8s forwards";
+      });
+      back.addEventListener("click", function () {
+        img[c].style.animation = "backout 0.8s forwards";
+        if (c == 0) {
+          c = img.length - 1;
+        } else {
+          c--;
+        }
+        img[c].style.animation = "backin 0.8s forwards";
+      });
+    </script>
+  </body>
+</html>

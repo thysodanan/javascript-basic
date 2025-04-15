@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text{
+            font-size: 3rem;
+            
+        }
+        .btn{
+            padding: 10px 2rem;
+            background-color: teal;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">
+        <h4>helle broooo!</h4>
+    </div>
+    <button class="btn">click</button>
+    <script>
+        const text=document.querySelector(".text");
+        const btn=document.querySelector(".btn")
+        btn.addEventListener("click",function(){
+            if(text.style.display=="none"){
+                text.style.display="block";
+            }else{
+                text.style.display="none"
+            }
+        })
+    </script>
+</body>
+</html>

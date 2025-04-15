@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <label for="">Input Name</label>
+    <input type="text" class="username form-control" />
+    <label for="">Input Password</label>
+    <input type="text" class="password form-control" />
+    <label for="">Input Email</label>
+    <input type="text" class="email form-control" />
+    <button class="btn btn-primary">Login</button>
+    <script>
+      var uname = document.querySelector(".username");
+      var pass = document.querySelector(".password");
+      var email = document.querySelector(".email");
+      var btn = document.querySelector(".btn");
+      console.log(name,pass,email)
+      btn.addEventListener("click", function () {
+        if (uname.value == "nan") {
+          if (pass.value == 12) {
+            if (email.value == "sa") {
+            //   alert(`Login scuss`);
+            swal("Here's a message!", "Congratulation you login scuess")
+            
+        } else {
+                swal("Here's a message!", "you input worrg email")
+                //   alert(`worrg email`);
+            }
+        } else {
+              swal("Here's a message!", "you input worrg password")
+              // alert(`worrg password`);
+            }
+        } else {
+            swal("Here's a message!", "you input worrg name")
+        //   alert(`Worrg name`);
+        }
+      });
+    </script>
+  </body>
+</html>
